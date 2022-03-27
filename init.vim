@@ -25,6 +25,7 @@ Plug 'Jorengarenar/vim-MvVis'           " move visual selection
 Plug 'neoclide/coc.nvim', {'branch': 'release'}      " LSP and more
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fzf itself
 Plug 'junegunn/fzf.vim'                  " fuzzy search
+Plug 'honza/vim-snippets'                " actual snippets
 Plug 'Yggdroot/indentLine'               " show indentation lines
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python
 Plug 'tpope/vim-commentary'              " better commenting
