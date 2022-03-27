@@ -13,65 +13,66 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " ================= looks and GUI stuff ================== "{{{
 
-Plug 'ryanoasis/vim-devicons'                           " pretty icons everywhere
-Plug 'luochen1990/rainbow'                              " rainbow parenthesis
-Plug 'hzchirs/vim-material'                             " material color themes
-Plug 'gregsexton/MatchTag'                              " highlight matching html tags
-Plug 'Jorengarenar/vim-MvVis'                           " move visual selection
+Plug 'ryanoasis/vim-devicons'           " pretty icons everywhere
+Plug 'luochen1990/rainbow'              " rainbow parenthesis
+Plug 'morhetz/gruvbox'
+Plug 'gregsexton/MatchTag'              " highlight matching html tags
+Plug 'Jorengarenar/vim-MvVis'           " move visual selection
 "}}}
 
 " ================= Functionalities ================= "{{{
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}         " LSP and more
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }     " fzf itself
-Plug 'junegunn/fzf.vim'                                 " fuzzy search integration
-Plug 'honza/vim-snippets'                               " actual snippets
-Plug 'Yggdroot/indentLine'                              " show indentation lines
+Plug 'neoclide/coc.nvim', {'branch': 'release'}      " LSP and more
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }  " fzf itself
+Plug 'junegunn/fzf.vim'                  " fuzzy search
+Plug 'Yggdroot/indentLine'               " show indentation lines
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}  " better python
-Plug 'tpope/vim-commentary'                             " better commenting
-Plug 'mhinz/vim-startify'                               " cool start up screen
-Plug 'tpope/vim-fugitive'                               " git support
-Plug 'psliwka/vim-smoothie'                             " some very smooth ass scrolling
-Plug 'wellle/tmux-complete.vim'                         " complete words from a tmux panes
-Plug 'tpope/vim-eunuch'                                 " run common Unix commands inside Vim
-Plug 'machakann/vim-sandwich'                           " make sandwiches
-Plug 'christoomey/vim-tmux-navigator'                   " seamless vim and tmux navigation
+Plug 'tpope/vim-commentary'              " better commenting
+Plug 'mhinz/vim-startify'                " cool start up screen
+Plug 'tpope/vim-fugitive'                " git support
+Plug 'psliwka/vim-smoothie'              " some very smooth ass scrolling
+Plug 'wellle/tmux-complete.vim'          " complete words from a tmux panes
+Plug 'tpope/vim-eunuch'                  " run Unix commands inside Vim
+Plug 'machakann/vim-sandwich'            " make sandwiches
+Plug 'christoomey/vim-tmux-navigator'    " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'memgraph/cypher.vim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "}}}
 
 " ==================== general config ======================== "{{{
 
-set termguicolors                                       " Opaque Background
-set mouse=a                                             " enable mouse scrolling
-set clipboard+=unnamedplus                              " use system clipboard by default
+set nocompatible
+set termguicolors                       " Opaque Background
+set mouse=a                             " enable mouse scrolling
+set clipboard+=unnamedplus              " use system clipboard by default
 set tabstop=4 softtabstop=4 shiftwidth=4 autoindent     " tab width
-set expandtab smarttab                                  " tab key actions
-set incsearch ignorecase smartcase hlsearch             " highlight text while searching
-set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
-set fillchars+=vert:\▏                                  " requires a patched nerd font (try FiraCode)
-set wrap breakindent                                    " wrap long lines to the width set by tw
-set encoding=utf-8                                      " text encoding
-set number                                              " enable numbers on the left
-set relativenumber                                      " current line is 0
-set title                                               " tab title as file name
-set noshowmode                                          " dont show current mode below statusline
-set noshowcmd                                           " to get rid of display of last command
-set conceallevel=2                                      " set this so we wont break indentation plugin
-set splitright                                          " open vertical split to the right
-set splitbelow                                          " open horizontal split to the bottom
-set tw=90                                               " auto wrap lines that are longer than that
-set emoji                                               " enable emojis
-set history=1000                                        " history limit
-set backspace=indent,eol,start                          " sensible backspacing
-set undofile                                            " enable persistent undo
-set undodir=/tmp                                        " undo temp file directory
-set foldlevel=0                                         " open all folds by default
-set inccommand=nosplit                                  " visual feedback while substituting
-set showtabline=0                                       " always show tabline
-set grepprg=rg\ --vimgrep                               " use rg as default grepper
+set expandtab smarttab                  " tab key actions
+set incsearch ignorecase smartcase hlsearch   " highlight while searching
+set list listchars=trail:»,tab:»-       " use tab to navigate in list mode
+set fillchars+=vert:\▏                  " requires a patched nerd font
+set wrap breakindent                    " wrap long lines to the width
+set encoding=utf-8                      " text encoding
+set number                              " enable numbers on the left
+"set relativenumber                     " current line is 0
+set title                               " tab title as file name
+set noshowmode                          " dont show mode below statusline
+set noshowcmd                           " to get rid of display of last cmd
+set conceallevel=2                      " set this so we wont break indent
+set splitright                          " open vertical split to the right
+set splitbelow                          " open horizontal split to bottom
+set tw=90                               " auto wrap lines that longer
+set emoji                               " enable emojis
+set history=1000                        " history limit
+set backspace=indent,eol,start          " sensible backspacing
+"set undofile                           " enable persistent undo
+"set undodir=/tmp                       " undo temp file directory
+set foldlevel=0                         " open all folds by default
+set inccommand=nosplit                  " visual fback while substituting
+set showtabline=0                       " always show tabline
+set grepprg=rg\ --vimgrep               " use rg as default grepper
 
 " performance tweaks
 set nocursorline
@@ -92,15 +93,13 @@ set shortmess+=c
 set signcolumn=yes
 
 " Themeing
-let g:material_style = 'oceanic'
-colorscheme vim-material
-hi Pmenu guibg='#00010a' guifg=white                    " popup menu colors
-hi Comment gui=italic cterm=italic                      " italic comments
-hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE          " search string highlight color
-hi NonText guifg=bg                                     " mask ~ on empty lines
-hi clear CursorLineNr                                   " use the theme color for relative number
-hi CursorLineNr gui=bold                                " make relative number bold
-hi SpellBad guifg=NONE gui=bold,undercurl               " misspelled words
+let g:gruvbox_termcolors = 256
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_italicize_comments = 1
+let g:gruvbox_improved_strings = 0
+let g:gruvbox_improved_warnings = 0
+let g:gruvbox_guisp_fallback = 'bg'
+colorscheme gruvbox
 
 " colors for git (especially the gutter)
 hi DiffAdd  guibg=#0f111a guifg=#43a047
@@ -115,8 +114,8 @@ hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 " ======================== Plugin Configurations ======================== "{{{
 
 "" built in plugins
-let loaded_netrwPlugin = 1                              " disable netrw
-let g:omni_sql_no_default_maps = 1                      " disable sql omni completion
+let loaded_netrwPlugin = 1                 " disable netrw
+let g:omni_sql_no_default_maps = 1         " disable sql omni completion
 let g:loaded_python_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_ruby_provider = 0
@@ -157,7 +156,7 @@ let g:coc_global_extensions = [
 " indentLine
 let g:indentLine_char_list = ['▏', '¦', '┆', '┊']
 let g:indentLine_setColors = 0
-let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
+let g:indentLine_setConceal = 0  " actually fix markdown links conversion
 let g:indentLine_fileTypeExclude = ['startify']
 
 "" startify
@@ -191,13 +190,13 @@ let g:startify_commands = [
 " custom banner
 let g:startify_custom_header = [
  \ '',
- \ '                                                    ▟▙            ',
- \ '                                                    ▝▘            ',
- \ '            ██▃▅▇█▆▖  ▗▟████▙▖   ▄████▄   ██▄  ▄██  ██  ▗▟█▆▄▄▆█▙▖',
- \ '            ██▛▔ ▝██  ██▄▄▄▄██  ██▛▔▔▜██  ▝██  ██▘  ██  ██▛▜██▛▜██',
- \ '            ██    ██  ██▀▀▀▀▀▘  ██▖  ▗██   ▜█▙▟█▛   ██  ██  ██  ██',
- \ '            ██    ██  ▜█▙▄▄▄▟▊  ▀██▙▟██▀   ▝████▘   ██  ██  ██  ██',
- \ '            ▀▀    ▀▀   ▝▀▀▀▀▀     ▀▀▀▀       ▀▀     ▀▀  ▀▀  ▀▀  ▀▀',
+ \ '                                                              ',
+ \ '                                                              ',
+ \ '              ██   ██ ███████ ██    ██ ███████ ███████ ██████ ',
+ \ '              ██  ██  ██       ██  ██     ███  ██      ██   ██',
+ \ '              █████   █████     ████     ███   █████   ██████ ',
+ \ '              ██  ██  ██         ██     ███    ██      ██   ██',
+ \ '              ██   ██ ███████    ██    ███████ ███████ ██   ██',
  \ '',
  \ '',
  \ '',
@@ -210,7 +209,7 @@ let g:rainbow_active = 1
 let g:tmux_navigator_no_mappings = 1
 
 " semshi settings
-let g:semshi#error_sign	= v:false                       " let ms python lsp handle this
+let g:semshi#error_sign	= v:false     " let ms python lsp handle this
 
 "" FZF
 let g:fzf_action = {
@@ -228,10 +227,10 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!.git/**' --glob '!build
 
 " ======================== Commands ============================= "{{{
 
-au BufEnter * set fo-=c fo-=r fo-=o                     " stop annoying auto commenting on new lines
-au FileType help wincmd L                               " open help in vertical split
-au BufWritePre * :%s/\s\+$//e                           " remove trailing whitespaces before saving
-au CursorHold * silent call CocActionAsync('highlight') " highlight match on cursor hold
+au BufEnter * set fo-=c fo-=r fo-=o   " stop auto commenting on new lines
+au FileType help wincmd L             " open help in vertical split
+au BufWritePre * :%s/\s\+$//e         " rm trailing whitespaces before save
+au CursorHold * silent call CocActionAsync('highlight') " match on cursor
 
 " enable spell only if file type is normal text
 let spellable = ['markdown', 'gitcommit', 'txt', 'text', 'liquid', 'rst']
