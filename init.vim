@@ -15,7 +15,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 Plug 'ryanoasis/vim-devicons'           " pretty icons everywhere
 Plug 'luochen1990/rainbow'              " rainbow parenthesis
-Plug 'morhetz/gruvbox'
+Plug 'hzchirs/vim-material'             " material color themes
+Plug 'morhetz/gruvbox'                  " gruvbox theme
 Plug 'gregsexton/MatchTag'              " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'           " move visual selection
 "}}}
@@ -101,6 +102,13 @@ let g:gruvbox_improved_strings = 0
 let g:gruvbox_improved_warnings = 0
 let g:gruvbox_guisp_fallback = 'bg'
 colorscheme gruvbox
+"hi Pmenu guibg='#00010a' guifg=white             " popup menu colors
+"hi Comment gui=italic cterm=italic               " italic comments
+"hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE   " search string highlight
+hi NonText guifg=bg                              " mask ~ on empty lines
+hi clear CursorLineNr                  " use theme color for relative number
+hi CursorLineNr gui=bold                         " make relative number bold
+hi SpellBad guifg=NONE gui=bold,undercurl        " misspelled words
 
 " colors for git (especially the gutter)
 hi DiffAdd  guibg=#0f111a guifg=#43a047
@@ -191,15 +199,11 @@ let g:startify_commands = [
 " custom banner
 let g:startify_custom_header = [
  \ '',
- \ '                                                              ',
- \ '                                                              ',
- \ '              ██   ██ ███████ ██    ██ ███████ ███████ ██████ ',
- \ '              ██  ██  ██       ██  ██     ███  ██      ██   ██',
- \ '              █████   █████     ████     ███   █████   ██████ ',
- \ '              ██  ██  ██         ██     ███    ██      ██   ██',
- \ '              ██   ██ ███████    ██    ███████ ███████ ██   ██',
- \ '',
- \ '',
+ \ '               ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄',
+ \ '               █░▄▀█░▄▄▀█░▄▄▀█░█▀█░▄▀▄░█░▄▄▀█░▄▄█▄░▄█░▄▄█░▄▄▀█',
+ \ '               █░█░█░▀▀░█░▀▀▄█░▄▀█░█▄█░█░▀▀░█▄▄▀██░██░▄▄█░▀▀▄█',
+ \ '               █▄▄██▄██▄█▄█▄▄█▄█▄█▄███▄█▄██▄█▄▄▄██▄██▄▄▄█▄█▄▄█',
+ \ '               ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀',
  \ '',
  \]
 
