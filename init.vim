@@ -11,7 +11,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 "}}}
 
-" ================= looks and GUI stuff ================== "{{{
+" ================ looks and GUI stuff ================== "{{{
 
 Plug 'ryanoasis/vim-devicons'           " pretty icons everywhere
 Plug 'luochen1990/rainbow'              " rainbow parenthesis
@@ -19,6 +19,7 @@ Plug 'hzchirs/vim-material'             " material color themes
 Plug 'morhetz/gruvbox'                  " gruvbox theme
 Plug 'gregsexton/MatchTag'              " highlight matching html tags
 Plug 'Jorengarenar/vim-MvVis'           " move visual selection
+
 "}}}
 
 " ================= Functionalities ================= "{{{
@@ -44,7 +45,7 @@ call plug#end()
 
 "}}}
 
-" ==================== general config ======================== "{{{
+" ==================== general config ======================= "{{{
 
 set nocompatible
 set termguicolors                       " Opaque Background
@@ -95,19 +96,21 @@ set shortmess+=c
 set signcolumn=yes
 
 " Themeing
-let g:gruvbox_termcolors = 256
+let g:gruvbox_termcolors = 16
 let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_hls_cursor = 'green'
+let g:gruvbox_number_column = 'bg0'
 let g:gruvbox_italicize_comments = 1
 let g:gruvbox_improved_strings = 0
-let g:gruvbox_improved_warnings = 0
+let g:gruvbox_improved_warnings = 1
 let g:gruvbox_guisp_fallback = 'bg'
 colorscheme gruvbox
 "hi Pmenu guibg='#00010a' guifg=white             " popup menu colors
-"hi Comment gui=italic cterm=italic               " italic comments
-"hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE   " search string highlight
+hi Comment gui=italic cterm=italic               " italic comments
+hi Search guibg=#b16286 guifg=#ebdbb2 gui=NONE   " search string highlight
 hi NonText guifg=bg                              " mask ~ on empty lines
 hi clear CursorLineNr                  " use theme color for relative number
-hi CursorLineNr gui=bold                         " make relative number bold
+hi CursorLineNr gui=bold                      " make relative number bold
 hi SpellBad guifg=NONE gui=bold,undercurl        " misspelled words
 
 " colors for git (especially the gutter)
@@ -120,7 +123,7 @@ hi CocCursorRange guibg=#b16286 guifg=#ebdbb2
 
 "}}}
 
-" ======================== Plugin Configurations ======================== "{{{
+" ==================== Plugin Configurations =================== "{{{
 
 "" built in plugins
 let loaded_netrwPlugin = 1                 " disable netrw
@@ -328,9 +331,9 @@ endfunction
 
 "}}}
 
-" ======================== Custom Mappings ====================== "{{{
+" ======================= Custom Mappings ===================== "{{{
 
-"" the essentials
+" the essentials
 let mapleader=","
 nnoremap ; :
 nmap \ <leader>q
@@ -378,7 +381,7 @@ nnoremap <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " markdown preview
 au FileType markdown nmap <leader>m :MarkdownPreview<CR>
 
-"" FZF
+" FZF
 nnoremap <silent> <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 nmap <leader>c :Commands<CR>
@@ -393,7 +396,7 @@ nmap <F1> <plug>(fzf-maps-n)
 imap <F1> <plug>(fzf-maps-i)
 vmap <F1> <plug>(fzf-maps-x)
 
-"" coc
+" COC
 
 " use tab to navigate snippet placeholders
 inoremap <silent><expr> <TAB>
@@ -441,7 +444,7 @@ nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 "}}}
 
 
-" ======================== Additional sourcing ====================== "{{{
+" ===================== Additional sourcing ==================== "{{{
 source ~/.config/nvim/statusline.vim
 
 "}}}
