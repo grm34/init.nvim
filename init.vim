@@ -96,7 +96,7 @@ set shortmess+=c
 set signcolumn=yes
 
 " Themeing
-let g:gruvbox_termcolors = 16
+let g:gruvbox_termcolors = 256
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'green'
 let g:gruvbox_number_column = 'bg0'
