@@ -40,14 +40,14 @@ Plug 'machakann/vim-sandwich'            " make sandwiches
 Plug 'christoomey/vim-tmux-navigator'    " seamless vim and tmux navigation
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'memgraph/cypher.vim'
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 "}}}
 
 " ==================== general config ======================= "{{{
 
-set nocompatible
+"set nocompatible
 set termguicolors                       " Opaque Background
 set mouse=a                             " enable mouse scrolling
 set clipboard+=unnamedplus              " use system clipboard by default
