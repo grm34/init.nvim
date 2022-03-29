@@ -163,6 +163,7 @@ let g:coc_global_extensions = [
             \'coc-marketplace',
             \'coc-highlight',
             \'coc-sh',
+            \'coc-markdownlint',
             \]
 
 " indentLine
